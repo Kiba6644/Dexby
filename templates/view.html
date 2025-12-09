@@ -1,0 +1,42 @@
+{% extends  "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %} 
+<p></p>
+<br \>
+    <label for="start_date">Start Date: </label>
+    <input type="date" id="start_date" name="start_date">
+    <label for="end_date">End Date:</label>
+    <input type="date" id="end_date" name="end_date">
+    <button onclick="clicked()">Submit</button>
+<br \>
+<br \>
+<table class="table table-striped table-hover table-dark">
+    <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Text</th>
+    </tr>
+    <tbody id="myTable"></tbody>
+</table>
+
+<script>
+function clicked() {
+    var table = document.getElementById('myTable')
+    console.log(document.getElementById("start_date").value)
+    req = $.get('/view-data/'+ document.getElementById("start_date").value + "/"+ document.getElementById("end_date").value);
+    req.done(function(results){
+        $("myTable tr>td").remove(); 
+        for (const [key, value] of Object.entries(results)) {
+        var row = `<tr>
+                        <td>${key}</td>
+                        <td>${value}</td>
+                    </tr>`
+            table.innerHTML += row
+        console.log(key)
+        console.log(value)
+    }
+    });
+}
+
+</script>
+
+{% endblock %}
