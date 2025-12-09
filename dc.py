@@ -209,4 +209,4 @@ if __name__ == '__main__':
     flask_thread = Thread(target=lambda: app.run(debug=False, use_reloader=False), daemon=True)
     flask_thread.start()
 
-    bot.run('MTI4MTUwMTI0NjYyODU2MDkxOA.GeOpCV.3jublnmXC6GvfZTVX5G4jgGbTCzR1yvkTGmOtM')
+    bot.run('')
